@@ -1,3 +1,5 @@
+# Run tests with: lein doo node test
+
 # Re-frame Example/Starter
 
 Figwheel + Re-Frame + Bidi + Pushy (HTML5 no-hash routing)

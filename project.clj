@@ -6,11 +6,14 @@
                  [bidi "2.1.3"]
                  [kibu/pushy "0.3.8"]]
 
-  :plugins [[lein-cljsbuild "1.1.5"]]
+  :plugins [[lein-cljsbuild "1.1.5"]
+            [lein-doo "0.1.10"]]
 
   :min-lein-version "2.5.3"
 
   :source-paths ["src/clj"]
+
+  :test-paths ["test/cljs"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
@@ -52,7 +55,15 @@
                     :closure-defines {goog.DEBUG false}
                     :pretty-print    false}}
 
+    {:id            "test"
+     :source-paths ["test/cljs"]
+     :compiler     {:main            my-app.test-runner
+                    :output-to       "resources/public/js/compiled/testable.js"
+                    :optimizations   :none
+                    :target          :nodejs}}
 
     ]}
 
-  )
+  :hooks [leiningen.cljsbuild]
+
+)
