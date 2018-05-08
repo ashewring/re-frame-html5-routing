@@ -19,7 +19,7 @@
 (defn- simplify [url]
   ;; if url ends with / or with /index.html, drop the suffix
   (cond
-    (and (s/ends-with? url "/") (< (count url) 1)) (remove-last-n url 1)
+    (and (s/ends-with? url "/") (> (count url) 1)) (remove-last-n url 1)
     (s/ends-with? url "/index.html") (remove-last-n url 11)
     :else url))
 
