@@ -23,7 +23,7 @@
     (s/ends-with? url "/index.html") (remove-last-n url 11)
     :else url))
 
-(defn- parse-url [url]
+(defn parse-url [url]
   (let [simplified (simplify url)]
     (js/console.log simplified)
     (bidi/match-route routes simplified)))

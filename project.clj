@@ -1,7 +1,7 @@
 (defproject my-app "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.908"]
-                 [reagent "0.7.0"]
+                 [org.clojure/clojurescript "1.10.238"]
+                 [reagent "0.8.0"]
                  [re-frame "0.10.5"]
                  [bidi "2.1.3"]
                  [kibu/pushy "0.3.8"]]
@@ -56,14 +56,15 @@
                     :pretty-print    false}}
 
     {:id            "test"
-     :source-paths ["test/cljs"]
+     :source-paths ["src" "test"]
      :compiler     {:main            my-app.test-runner
                     :output-to       "resources/public/js/compiled/testable.js"
+                    :output-dir      "resources/public/js/compiled"
                     :optimizations   :none
                     :target          :nodejs}}
 
     ]}
 
-  :hooks [leiningen.cljsbuild]
+  ;; :hooks [leiningen.cljsbuild]
 
 )
