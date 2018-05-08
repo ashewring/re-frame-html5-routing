@@ -5,7 +5,8 @@
             [pushy.core :as pushy]
             [re-frame.core :as re-frame]
             [my-app.events :as events]
-            [clojure.string :as s]))
+            [clojure.string :as s]
+            [cemerick.url :as c]))
 
 (def routes ["/" {""      :home
                   "about" :about
@@ -23,10 +24,21 @@
     (s/ends-with? url "/index.html") (remove-last-n url 11)
     :else url))
 
-(defn parse-url [url]
+(defn parse-url
+  [url]
   (let [simplified (simplify url)]
     (js/console.log simplified)
     (bidi/match-route routes simplified)))
+
+;; based on https://github.com/juxt/bidi/issues/51#issuecomment-344101759
+(defn parse-url-with-query-params
+  [url & {:as options}]
+  (let [query-params (->> (:query (c/url url))
+                          (map (fn [[k v]] [(keyword k) v]))
+                          (into {}))
+        simplified   (simplify url)]
+    (-> (bidi/match-route* routes simplified options)
+        (assoc :query-params query-params))))
 
 (defn- dispatch-route [matched-route]
   (js/console.log "dispatch-route")

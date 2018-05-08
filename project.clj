@@ -4,7 +4,8 @@
                  [reagent "0.8.0"]
                  [re-frame "0.10.5"]
                  [bidi "2.1.3"]
-                 [kibu/pushy "0.3.8"]]
+                 [kibu/pushy "0.3.8"]
+                 [com.cemerick/url "0.1.1"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
             [lein-doo "0.1.10"]]
