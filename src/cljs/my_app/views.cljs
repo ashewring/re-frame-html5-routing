@@ -2,16 +2,15 @@
   (:require [re-frame.core :as re-frame]
             [my-app.routes :as routes]
             [my-app.subs :as subs]
+            [my-app.layouts :as layouts]
             ))
 
 
 ;; home
 
 (defn home-panel []
-  (let [name (re-frame/subscribe [::subs/name])]
-    [:div (str "Hello from " @name ". This is the Home Page.")
-     [:div [:a {:href (routes/url-for :about)} "go to About Page"]]]))
-
+  (layouts/full-width-layout "S23M - Business Performance Optimisation"
+    "S23M makes sense of the world's information from your unique point of view. We offer business performance optimisation services."))
 
 ;; about
 
