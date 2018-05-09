@@ -9,7 +9,7 @@
   [title description]
 
   [:div#container
-    [meta-tags/meta-tags {:title title :description description}]
+    [meta-tags/meta-tags {:title title :description description} {:id "copyright" :name "copyright" :content "Copyright 2018 by S23M Limited"}]
     [:div.header
      [:div.headerleft
       [:a

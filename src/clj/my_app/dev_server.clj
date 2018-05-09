@@ -7,8 +7,8 @@
 (defn- wrap-default-index [next-handler]
   (fn [request]
     (next-handler
-     (if (or (starts-with? (:uri request) "/css/")
-             (starts-with? (:uri request) "/js/"))
+     (if (or (starts-with? (:uri request) "/assets/css/")
+             (starts-with? (:uri request) "/assets/js/"))
        request
        (assoc request :uri "/index.html")))))
 
@@ -16,4 +16,3 @@
   (-> (fn [_] {:status 404 :body "static asset not found"})
       (wrap-resource "public")
       wrap-default-index))
-

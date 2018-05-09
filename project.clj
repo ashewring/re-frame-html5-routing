@@ -17,9 +17,9 @@
 
   :test-paths ["test/cljs"]
 
-  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+  :clean-targets ^{:protect false} ["resources/public/assets/js/compiled" "target"]
 
-  :figwheel {:css-dirs ["resources/public/css"]
+  :figwheel {:css-dirs ["resources/public/assets/css"]
              :ring-handler my-app.dev-server/handler}
 
   :aliases {"dev" ["do" "clean"
@@ -41,9 +41,9 @@
      :figwheel     {:on-jsload "my-app.core/mount-root"
                     :websocket-host :js-client-host}
      :compiler     {:main                 my-app.core
-                    :output-to            "resources/public/js/compiled/app.js"
-                    :output-dir           "resources/public/js/compiled/out"
-                    :asset-path           "/js/compiled/out"
+                    :output-to            "resources/public/assets/js/compiled/app.js"
+                    :output-dir           "resources/public/assets/js/compiled/out"
+                    :asset-path           "/assets/js/compiled/out"
                     :source-map-timestamp true
                     :preloads             [devtools.preload]
                     :external-config      {:devtools/config {:features-to-install :all}}
@@ -52,7 +52,7 @@
     {:id           "min"
      :source-paths ["src/cljs"]
      :compiler     {:main            my-app.core
-                    :output-to       "resources/public/js/compiled/app.js"
+                    :output-to       "resources/public/assets/js/compiled/app.js"
                     :optimizations   :advanced
                     :closure-defines {goog.DEBUG false}
                     :pretty-print    false}}
@@ -60,8 +60,8 @@
     {:id            "test"
      :source-paths ["src" "test"]
      :compiler     {:main            my-app.test-runner
-                    :output-to       "resources/public/js/compiled/testable.js"
-                    :output-dir      "resources/public/js/compiled"
+                    :output-to       "resources/public/assets/js/compiled/testable.js"
+                    :output-dir      "resources/public/assets/js/compiled"
                     :optimizations   :none
                     :target          :nodejs}}
 
