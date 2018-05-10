@@ -4,6 +4,7 @@
             [my-app.subs :as subs]
             [my-app.meta-tags :as meta-tags]
             [goog.i18n.DateTimeFormat :as dtf]
+            [clojure.string :as s]
             ))
 
 (def ^:private current-year (.format (goog.i18n.DateTimeFormat. "yyyy") (js/Date.)))
@@ -78,51 +79,34 @@
       [:p
        "Enabling people and software systems to interact in the simplest possible way"]]]]])
 
+(defn- name-to-filename
+  [name]
+  (s/replace (s/lower-case name) #" " "-"))
+
 (defn- industry
-  [id name]
+  [name href]
   [:a.industry
-    {:href (str id "/index.html")}
+    (if (s/starts-with? name "http")
+      {:href href, :target "_blank"}
+      {:href href})
     [:img.rounded
-      {:src (str "assets/images/industries/" id ".jpg")}]
+      {:src (str "assets/images/industries/" (name-to-filename name) ".jpg")}]
     [:div.link-footer name]])
 
 (defn- industries
   []
   [:div.section
-   [:div.headline-container [:h2.headline "Industries"]]
-   [:div.flowing-list-wrapper
-    (industry "agriculture" "Agriculture")
-    (industry "healthcare" "Healthcare")
-    
-    [:a.industry
-     {:href "construction/index.html"}
-     [:img.rounded
-      {:src "assets/images/industries/construction.jpg"}]]
-    [:div.link-footer "Construction"]
-    [:a.industry
-     {:href "logistics/index.html"}
-     [:img.rounded {:src "assets/images/industries/logistics.jpg"}]]
-    [:div.link-footer "Logistics"]
-    [:a.industry
-     {:href "insight/data-science-case.html#case-study"}
-     [:img.rounded
-      {:src "assets/images/industries/industrial-automation.jpg"}]]
-    [:div.link-footer "Industrial Automation"]
-    [:a.industry
-     {:href "performance/governance-case.html#case-study"}
-     [:img.rounded
-      {:src "assets/images/industries/professional-services.jpg"}]]
-    [:div.link-footer "Professional Services"]
-    [:a.industry
-     {:href "government/index.html"}
-     [:img.rounded {:src "assets/images/industries/government.jpg"}]]
-    [:div.link-footer "Government"]
-    [:a.industry
-     {:target "_blank", :href "https://ciic.s23m.com/about"}
-     [:img.rounded
-      {:src
-       "assets/images/industries/interdisciplinary-collaboration.jpg"}]]
-    [:div.link-footer "Interdisciplinary"]]])
+    [:div.headline-container
+      [:h2.headline "Industries"]]
+    [:div.flowing-list-wrapper
+      (industry "Agriculture" "agriculture/index.html")
+      (industry "Healthcare" "healthcare/index.html")
+      (industry "Construction" "construction/index.html")
+      (industry "Logistics" "logistics/index.html")
+      (industry "Industrial Automation" "insight/data-science-case.html#case-study")
+      (industry "Professional Services" "performance/governance-case.html#case-study")
+      (industry "Government" "government/index.html")
+      (industry "Interdisciplinary" "https://ciic.s23m.com/about")]])
 
 (defn full-width-layout
   [title description heading]
