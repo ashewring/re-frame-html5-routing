@@ -10,21 +10,77 @@
 
 (def ^:private copyright (str "Copyright " current-year " by S23M Limited"))
 
+(defn- buttons
+  []
+  [:div.buttonholder
+   [:span.buttons ;; TODO: proper event handling based on current page
+    [:a.smallbutton.disabled
+     ;;{:on-click "return false", :href "#"}
+     "Home"]
+    [:a.smallbutton {:href "about/index.html"} "About"]
+    [:a#news-button.smallbutton.news
+     {:href "news/index.html"}
+     "News"]
+    [:a.smallbutton {:href "contactus/index.html"} "Contact"]]])
+
+(defn- header
+  [heading]
+  [:div.header
+   [:div.headerleft
+    [:a
+     {:href "life/index.html"}
+     [:img.s23m-logo
+      {:title "Collaboration for Life",
+       :alt "Collaboration for Life",
+       :src "assets/images/s23m-logo.png"}]]]
+   [:div.headerright [:h1 heading]]
+   (buttons)])
+
+(defn- lines-of-business
+  []
+  [:div.section
+   [:ul.responsive-list
+    [:li.innovation-new-product-development
+     [:div
+      [:a.line-of-business
+       {:href "innovation-new-product-development.html"}
+       [:img.rounded {:src "assets/images/value-cycle-design.jpg"}]
+       [:h3 "Innovation & New Product Development"]]
+      [:p
+       "Helping you to innovate and make significantly better decisions"]]]
+    [:li.operational-excellence
+     [:div
+      [:a.line-of-business
+       {:href "operational-excellence.html"}
+       [:img.rounded
+        {:src "assets/images/collaboration-whiteboard.jpg"}]
+       [:h3 "Operational Excellence"]]
+     [:p
+      "Producing transformative improvements by reducing complexity and catalysing cultural transformation"]]]
+    [:li.enterprise-saas
+     [:div
+      [:a.line-of-business
+       {:href "enterprise-saas.html"}
+       [:img.rounded {:src "assets/images/saas.jpg"}]
+       [:h3 "Enterprise Software as a Service"]]
+      [:p
+       "Enabling people and software systems to interact in the simplest possible way"]]]]])
+
 (defn full-width-layout
   [title description heading]
 
   [:div#container
     [meta-tags/meta-tags {:title title :description description} {:id "copyright" :name "copyright" :content copyright}]
-    [:div.header
-     [:div.headerleft
-      [:a
-       {:href "life/index.html"}
-       [:img.s23m-logo
-        {:title "Collaboration for Life",
-         :alt "Collaboration for Life",
-         :src "assets/images/s23m-logo.png"}]]]
-     [:div.headerright [:h1 heading]]
-     ]])
+    (header heading)
+
+    [:div.headline-container
+      [:h2.headline
+        "S23M makes sense of the world's information"
+        [:br]
+        "from your unique point of view"]]
+    (lines-of-business)
+
+     ])
 
 (comment
 
@@ -88,16 +144,16 @@
     [:div.section
      [:ul.responsive-list
       [:li.innovation-new-product-development
-       [:div
-        [:a.line-of-business
+       [:div.line-of-business
+        [:a
          {:href "innovation-new-product-development.html"}
          [:img.rounded {:src "assets/images/value-cycle-design.jpg"}]]
-        [:h3 "Innovation & New Product Development"]
+         [:h3 "Innovation & New Product Development"]
         [:p
          "Helping you to innovate and make significantly better decisions"]]]
       [:li.operational-excellence
-       [:div
-        [:a.line-of-business
+       [:div.line-of-business
+        [:a
          {:href "operational-excellence.html"}
          [:img.rounded
           {:src "assets/images/collaboration-whiteboard.jpg"}]]
@@ -106,8 +162,8 @@
         "Producing transformative improvements by reducing complexity and catalysing cultural transformation"]
        [:p]]
       [:li.enterprise-saas
-       [:div
-        [:a.line-of-business
+       [:div.line-of-business
+        [:a
          {:href "enterprise-saas.html"}
          [:img.rounded {:src "assets/images/saas.jpg"}]]
         [:h3 "Enterprise Software as a Service"]
