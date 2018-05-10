@@ -9,8 +9,11 @@
 ;; home
 
 (defn home-panel []
-  (layouts/full-width-layout "S23M - Business Performance Optimisation"
-    "S23M makes sense of the world's information from your unique point of view. We offer business performance optimisation services."))
+  (layouts/full-width-layout
+    "S23M - Business Performance Optimisation"
+    "S23M makes sense of the world's information from your unique point of view. We offer business performance optimisation services."
+    "Business Performance Optimisation"
+    ))
 
 ;; about
 

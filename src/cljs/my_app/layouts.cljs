@@ -3,13 +3,18 @@
             [my-app.routes :as routes]
             [my-app.subs :as subs]
             [my-app.meta-tags :as meta-tags]
+            [goog.i18n.DateTimeFormat :as dtf]
             ))
 
+(def ^:private current-year (.format (goog.i18n.DateTimeFormat. "yyyy") (js/Date.)))
+
+(def ^:private copyright (str "Copyright " current-year " by S23M Limited"))
+
 (defn full-width-layout
-  [title description]
+  [title description heading]
 
   [:div#container
-    [meta-tags/meta-tags {:title title :description description} {:id "copyright" :name "copyright" :content "Copyright 2018 by S23M Limited"}]
+    [meta-tags/meta-tags {:title title :description description} {:id "copyright" :name "copyright" :content copyright}]
     [:div.header
      [:div.headerleft
       [:a
@@ -18,7 +23,7 @@
         {:title "Collaboration for Life",
          :alt "Collaboration for Life",
          :src "assets/images/s23m-logo.png"}]]]
-     [:div.headerright [:h1 "Business Performance Optimisation"]]
+     [:div.headerright [:h1 heading]]
      ]])
 
 (comment
