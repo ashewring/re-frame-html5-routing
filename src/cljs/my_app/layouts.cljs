@@ -10,6 +10,10 @@
 
 (def ^:private copyright (str "Copyright " current-year " by S23M Limited"))
 
+(defn- meta-tags
+  [title description]
+  [meta-tags/meta-tags {:title title :description description} {:id "copyright" :name "copyright" :content copyright}])
+
 (defn- buttons
   []
   [:div.buttonholder
@@ -35,6 +39,14 @@
        :src "assets/images/s23m-logo.png"}]]]
    [:div.headerright [:h1 heading]]
    (buttons)])
+
+(defn- main-headline
+  []
+  [:div.headline-container
+    [:h2.headline
+      "S23M makes sense of the world's information"
+      [:br]
+      "from your unique point of view"]])
 
 (defn- lines-of-business
   []
@@ -66,19 +78,61 @@
       [:p
        "Enabling people and software systems to interact in the simplest possible way"]]]]])
 
+(defn- industry
+  [id name]
+  [:a.industry
+    {:href (str id "/index.html")}
+    [:img.rounded
+      {:src (str "assets/images/industries/" id ".jpg")}]
+    [:div.link-footer name]])
+
+(defn- industries
+  []
+  [:div.section
+   [:div.headline-container [:h2.headline "Industries"]]
+   [:div.flowing-list-wrapper
+    (industry "agriculture" "Agriculture")
+    (industry "healthcare" "Healthcare")
+    
+    [:a.industry
+     {:href "construction/index.html"}
+     [:img.rounded
+      {:src "assets/images/industries/construction.jpg"}]]
+    [:div.link-footer "Construction"]
+    [:a.industry
+     {:href "logistics/index.html"}
+     [:img.rounded {:src "assets/images/industries/logistics.jpg"}]]
+    [:div.link-footer "Logistics"]
+    [:a.industry
+     {:href "insight/data-science-case.html#case-study"}
+     [:img.rounded
+      {:src "assets/images/industries/industrial-automation.jpg"}]]
+    [:div.link-footer "Industrial Automation"]
+    [:a.industry
+     {:href "performance/governance-case.html#case-study"}
+     [:img.rounded
+      {:src "assets/images/industries/professional-services.jpg"}]]
+    [:div.link-footer "Professional Services"]
+    [:a.industry
+     {:href "government/index.html"}
+     [:img.rounded {:src "assets/images/industries/government.jpg"}]]
+    [:div.link-footer "Government"]
+    [:a.industry
+     {:target "_blank", :href "https://ciic.s23m.com/about"}
+     [:img.rounded
+      {:src
+       "assets/images/industries/interdisciplinary-collaboration.jpg"}]]
+    [:div.link-footer "Interdisciplinary"]]])
+
 (defn full-width-layout
   [title description heading]
 
   [:div#container
-    [meta-tags/meta-tags {:title title :description description} {:id "copyright" :name "copyright" :content copyright}]
+    (meta-tags title description)
     (header heading)
-
-    [:div.headline-container
-      [:h2.headline
-        "S23M makes sense of the world's information"
-        [:br]
-        "from your unique point of view"]]
+    (main-headline)
     (lines-of-business)
+    (industries)
 
      ])
 
