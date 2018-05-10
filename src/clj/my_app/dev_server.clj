@@ -7,8 +7,7 @@
 (defn- wrap-default-index [next-handler]
   (fn [request]
     (next-handler
-     (if (or (starts-with? (:uri request) "/assets/css/")
-             (starts-with? (:uri request) "/assets/js/"))
+     (if (starts-with? (:uri request) "/assets")
        request
        (assoc request :uri "/index.html")))))
 
