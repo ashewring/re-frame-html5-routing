@@ -113,3 +113,49 @@
       (industry "Professional Services" "performance/governance-case.html#case-study")
       (industry "Government" "government/index.html")
       (industry "Interdisciplinary" "https://ciic.s23m.com/about")]])
+
+(defn call-to-action
+  [text]
+  [:div.call-to-action-wrapper
+    [:a.call-to-action-button
+      {:href "contactus/index.html"}
+      text]])
+
+(defn footer
+  []
+  [:span
+    [:div.footer-separator]
+    [:div.colmask.footer
+     [:div.colmid
+      [:div.colright
+       [:div.col1wrap
+        [:div.col1pad
+         [:div.col1
+          [:table.links
+           [:tr
+            [:td.left
+             [:a.smallbutton
+              {:href "case-studies/index.html"}
+              "Case Studies"]]
+            [:td.center
+             [:a.smallbutton
+              {:href "life/index.html"}
+              "Collaboration"]]
+            [:td.right
+             [:a.smallbutton
+              {:href "methodology/index.html"}
+              "Methodology"]]]]
+              ]]]
+       [:div.col2.sidebar-left
+        [:span.left
+         [:a
+          {:title "Scroll to the top of this page", :href "#"}
+          "Top ↑"]]
+          ]
+       [:div.col3.sidebar-right
+        [:span.right "© 2002 - 2018 " [:span.s23m "S23M"]]
+        ]]]]])
+
+(defn disclaimer
+  []
+  [:div.disclaimer [:a {:href "disclaimer.html"} "Disclaimer"]])

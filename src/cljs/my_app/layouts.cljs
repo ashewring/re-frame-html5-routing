@@ -3,9 +3,12 @@
 
 (defn full-width-layout
   [title description heading content]
-  [:div#container
-    [c/meta-tags title description]
-    [c/header heading]
-    content
-    ;; TODO: add footer, disclaimer
-    ])
+  [:div
+    [:div#container
+      [c/meta-tags title description]
+      [c/header heading]
+      content]
+      ;; TODO: add footer, disclaimer
+      [c/disclaimer]]
+
+  )

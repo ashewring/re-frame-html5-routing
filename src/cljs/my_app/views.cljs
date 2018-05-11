@@ -9,10 +9,14 @@
 
 (defn- home-page-content
   []
+
   [:span
-    [c/main-headline]
-    [c/lines-of-business]
-    [c/industries]
+    [:span
+      [c/main-headline]
+      [c/lines-of-business]
+      [c/industries]
+      [c/call-to-action "Contact us about your business challenges"]
+      [c/footer]]
 
     ;; pre-loading content
     [:img
