@@ -153,7 +153,7 @@
           "Top ↑"]]
           ]
        [:div.col3.sidebar-right
-        [:span.right "© 2002 - 2018 " [:span.s23m "S23M"]]
+        [:span.right (str "© 2002 - " (current-year) " ") [:span.s23m "S23M"]]
         ]]]]])
 
 (defn disclaimer
