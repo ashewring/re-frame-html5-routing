@@ -102,17 +102,31 @@
 
 (defn- industries-image
   [name]
+  (js/console.log (str "industries-image: " (image "industries/") (name-to-filename name) ".jpg"))
+
   [:img.rounded
     {:src (str (image "industries/") (name-to-filename name) ".jpg")}])
 
 (defn- industry
   [name href]
   [:a.industry
-    (if (s/starts-with? name "http")
+    (if (s/starts-with? href "http")
       {:href href :target "_blank"}
       {:href href})
     (industries-image name)
     [:div.link-footer name]])
+
+(defn- industry-button
+  [id]
+  (let [href (routes/url-for id)
+        name (pages/button-title id)]
+    [:a.industry
+      (if (s/starts-with? href "http")
+        {:href href :target "_blank"}
+        {:href href})
+      (industries-image name)
+      (js/console.log (str "industry-button - href: '" href "', name: '" name "'"))
+      [:div.link-footer name]]))
 
 (defn industries
   []
@@ -121,14 +135,15 @@
     [:div.headline-container
       [:h2.headline "Industries"]]
     [:div.flowing-list-wrapper
-      (industry "Agriculture" "agriculture/index.html")
-      (industry "Healthcare" "healthcare/index.html")
+      (industry-button :agriculture)
+      (industry-button :healthcare)
       (industry "Construction" "construction/index.html")
       (industry "Logistics" "logistics/index.html")
       (industry "Industrial Automation" "insight/data-science-case.html#case-study")
       (industry "Professional Services" "performance/governance-case.html#case-study")
       (industry "Government" "government/index.html")
-      (industry "Interdisciplinary" "https://ciic.s23m.com/about")]])
+      (industry "Interdisciplinary" "https://ciic.s23m.com/about")
+      ]])
 
 (defn call-to-action
   [text]

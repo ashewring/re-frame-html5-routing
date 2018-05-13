@@ -37,6 +37,15 @@
     :header "News"
     :description "TODO"
   }
+  :ciic {
+    :button-title "Interdisciplinary"
+  }
+  :agriculture {
+    :button-title "Agriculture"
+  }
+  :healthcare {
+    :button-title "Healthcare"
+  }
   :not-found {
     :header "Page not found"
     :description "Page not found"
