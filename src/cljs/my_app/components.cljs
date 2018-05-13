@@ -21,6 +21,13 @@
   (js/console.log "meta-tags")
   [meta-tags/meta-tags {:title title :description description} {:id "copyright" :name "copyright" :content (copyright)}])
 
+(defn- small-button
+  [id]
+  [:a.smallbutton
+   {:href
+     (routes/url-for id)}
+     (pages/button-title id)])
+
 (defn- buttons
   []
   (js/console.log "buttons")
@@ -29,11 +36,11 @@
     [:a.smallbutton.disabled
      ;;{:on-click "return false", :href "#"}
      "Home"]
-    [:a.smallbutton {:href (routes/url-for :about)} "About"]
+    (small-button :about)
     [:a#news-button.smallbutton.news
-     {:href "news/index.html"}
-     "News"]
-    [:a.smallbutton {:href "contactus/index.html"} "Contact"]]])
+      {:href (routes/url-for :news)}
+      (pages/button-title :news)]
+    (small-button :contact-us)]])
 
 (defn header
   [heading]
@@ -93,14 +100,18 @@
   [name]
   (s/replace (s/lower-case name) #" " "-"))
 
+(defn- industries-image
+  [name]
+  [:img.rounded
+    {:src (str (image "industries/") (name-to-filename name) ".jpg")}])
+
 (defn- industry
   [name href]
   [:a.industry
     (if (s/starts-with? name "http")
-      {:href href, :target "_blank"}
+      {:href href :target "_blank"}
       {:href href})
-    [:img.rounded
-      {:src (str (image "industries/") (name-to-filename name) ".jpg")}]
+    (industries-image name)
     [:div.link-footer name]])
 
 (defn industries
@@ -123,15 +134,8 @@
   [text]
   [:div.call-to-action-wrapper
     [:a.call-to-action-button
-      {:href "contactus/index.html"}
+      {:href (routes/url-for :contact-us)}
       text]])
-
-(defn- small-button
-  [id]
-  [:a.smallbutton
-   {:href
-     (routes/url-for id)}
-     (pages/button-title id)])
 
 (defn footer
   []

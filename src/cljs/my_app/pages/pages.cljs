@@ -32,6 +32,11 @@
     :header "MODA&thinsp;+&thinsp;MODE methodology"
     :description "MODA + MODE (Model Oriented Domain Analysis and Engineering) provide advanced techniques for modular and redundant system design."
   }
+  :news {
+    :button-title "News"
+    :header "News"
+    :description "TODO"
+  }
   :not-found {
     :header "Page not found"
     :description "Page not found"
