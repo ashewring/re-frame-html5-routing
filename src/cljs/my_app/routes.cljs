@@ -10,9 +10,8 @@
 
 (def routes ["/" {""      :home
                   "about" :about
-                  ;; "about/" :about
-                  ;; "about/index.html" :about
-                  true :not-found
+                  "life"  :life
+                  true    :not-found
                   }])
 
 (defn- remove-last-n
@@ -46,7 +45,7 @@
 (defn- dispatch-route
   [matched-route]
   (js/console.log (str "dispatch-route: " matched-route))
-  (let [panel-name (keyword (str (name (:handler matched-route)) "-panel"))]
+  (let [panel-name (keyword (name (:handler matched-route)))]
     (js/console.log (str "panel-name: " panel-name))
     (re-frame/dispatch [::events/set-active-panel panel-name])))
 

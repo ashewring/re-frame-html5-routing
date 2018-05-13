@@ -24,7 +24,7 @@
     [:a.smallbutton.disabled
      ;;{:on-click "return false", :href "#"}
      "Home"]
-    [:a.smallbutton {:href "about/index.html"} "About"]
+    [:a.smallbutton {:href (routes/url-for :about)} "About"]
     [:a#news-button.smallbutton.news
      {:href "news/index.html"}
      "News"]
@@ -36,11 +36,11 @@
   [:div.header
    [:div.headerleft
     [:a
-     {:href "life/index.html"}
+     {:href (routes/url-for :life)}
      [:img.s23m-logo
       {:title "Collaboration for Life",
        :alt "Collaboration for Life",
-       :src "assets/images/s23m-logo.png"}]]]
+       :src "/assets/images/s23m-logo.png"}]]]
    [:div.headerright [:h1 heading]]
    (buttons)])
 
@@ -62,7 +62,7 @@
      [:div
       [:a.line-of-business
        {:href "innovation-new-product-development.html"}
-       [:img.rounded {:src "assets/images/value-cycle-design.jpg"}]
+       [:img.rounded {:src "/assets/images/value-cycle-design.jpg"}]
        [:h3 "Innovation & New Product Development"]]
       [:p
        "Helping you to innovate and make significantly better decisions"]]]
@@ -71,7 +71,7 @@
       [:a.line-of-business
        {:href "operational-excellence.html"}
        [:img.rounded
-        {:src "assets/images/collaboration-whiteboard.jpg"}]
+        {:src "/assets/images/collaboration-whiteboard.jpg"}]
        [:h3 "Operational Excellence"]]
      [:p
       "Producing transformative improvements by reducing complexity and catalysing cultural transformation"]]]
@@ -79,7 +79,7 @@
      [:div
       [:a.line-of-business
        {:href "enterprise-saas.html"}
-       [:img.rounded {:src "assets/images/saas.jpg"}]
+       [:img.rounded {:src "/assets/images/saas.jpg"}]
        [:h3 "Enterprise Software as a Service"]]
       [:p
        "Enabling people and software systems to interact in the simplest possible way"]]]]])
@@ -95,7 +95,7 @@
       {:href href, :target "_blank"}
       {:href href})
     [:img.rounded
-      {:src (str "assets/images/industries/" (name-to-filename name) ".jpg")}]
+      {:src (str "/assets/images/industries/" (name-to-filename name) ".jpg")}]
     [:div.link-footer name]])
 
 (defn industries
