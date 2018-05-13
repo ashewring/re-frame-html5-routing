@@ -8,11 +8,25 @@
             [clojure.string :as s]
             [cemerick.url :as c]))
 
-(def routes ["/" {""      :home
-                  "about" :about
-                  "life"  :life
-                  true    :not-found
-                  }])
+(def routes ["/" {""              :home
+                  "about"         :about
+                  "life"          :life
+                  "case-studies"  :case-studies
+                  "methodology"   :methodology
+                  "news"          :news
+                  "agriculture"   :agriculture
+                  "healthcare"    :healthcare
+                  "construction"  :construction
+                  "logistics"     :logistics
+                  "government"    :government
+                  "insight/" {
+                    "data-science-case.html" :industrial-automation
+                  }
+                  "performance/" {
+                    "governance-case.html" :professional-services
+                  }
+                  ;; true            :not-found
+             }])
 
 (defn- remove-last-n
   [str n]

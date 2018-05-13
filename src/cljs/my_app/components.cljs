@@ -8,7 +8,7 @@
             [clojure.string :as s]
             ))
 
-(defn- images-location
+(defn- image
   [name]
   (str "/assets/images/" name))
 
@@ -45,7 +45,7 @@
      [:img.s23m-logo
       {:title (pages/page-header :life),
        :alt (pages/page-header :life),
-       :src (images-location "s23m-logo.png")}]]]
+       :src (image "s23m-logo.png")}]]]
    [:div.headerright [:h1 heading]]
    (buttons)])
 
@@ -67,7 +67,7 @@
      [:div
       [:a.line-of-business
        {:href "innovation-new-product-development.html"}
-       [:img.rounded {:src (images-location "value-cycle-design.jpg")}]
+       [:img.rounded {:src (image "value-cycle-design.jpg")}]
        [:h3 "Innovation & New Product Development"]]
       [:p
        "Helping you to innovate and make significantly better decisions"]]]
@@ -76,7 +76,7 @@
       [:a.line-of-business
        {:href "operational-excellence.html"}
        [:img.rounded
-        {:src (images-location "collaboration-whiteboard.jpg")}]
+        {:src (image "collaboration-whiteboard.jpg")}]
        [:h3 "Operational Excellence"]]
      [:p
       "Producing transformative improvements by reducing complexity and catalysing cultural transformation"]]]
@@ -84,7 +84,7 @@
      [:div
       [:a.line-of-business
        {:href "enterprise-saas.html"}
-       [:img.rounded {:src (images-location "saas.jpg")}]
+       [:img.rounded {:src (image "saas.jpg")}]
        [:h3 "Enterprise Software as a Service"]]
       [:p
        "Enabling people and software systems to interact in the simplest possible way"]]]]])
@@ -100,7 +100,7 @@
       {:href href, :target "_blank"}
       {:href href})
     [:img.rounded
-      {:src (str (images-location "industries/") (name-to-filename name) ".jpg")}]
+      {:src (str (image "industries/") (name-to-filename name) ".jpg")}]
     [:div.link-footer name]])
 
 (defn industries
@@ -126,6 +126,13 @@
       {:href "contactus/index.html"}
       text]])
 
+(defn- small-button
+  [id]
+  [:a.smallbutton
+   {:href
+     (routes/url-for id)}
+     (pages/button-title id)])
+
 (defn footer
   []
   [:span
@@ -139,18 +146,9 @@
           [:table.links
             [:tbody
               [:tr
-                [:td.left
-                 [:a.smallbutton
-                  {:href "case-studies/index.html"}
-                  "Case Studies"]]
-                [:td.center
-                 [:a.smallbutton
-                  {:href (routes/url-for :life)}
-                  (pages/button-title :life)]]
-                [:td.right
-                 [:a.smallbutton
-                  {:href "methodology/index.html"}
-                  "Methodology"]]]]]
+                [:td.left (small-button :case-studies)]
+                [:td.center (small-button :life)]
+                [:td.right (small-button :methodology)]]]]
               ]]]
        [:div.col2.sidebar-left
         [:span.left

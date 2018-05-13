@@ -53,6 +53,26 @@
       "Collaboration for Life"
       [c/footer]]))
 
+;; methodology
+
+(defn methodology-panel
+  []
+  (layouts/full-width-layout
+    "Methodology"
+    "TODO"
+    [:span
+      "Methodology"
+      [c/footer]]))
+
+;; industrial-automation
+(defn industrial-automation-panel
+  []
+  (layouts/full-width-layout
+    "industrial-automation"
+    "TODO"
+    [:span
+      "industrial-automation"
+      [c/footer]]))
 
 ;; 404
 
@@ -81,6 +101,8 @@
       :home [home-panel]
       :about [about-panel]
       :life [life-panel]
+      :methodology [methodology-panel]
+      :industrial-automation [industrial-automation-panel]
       [not-found-panel])))
 
 (defn show-panel [panel-name]
