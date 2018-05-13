@@ -9,7 +9,6 @@
 
 (defn- home-page-content
   []
-
   [:span
     [:span
       [c/main-headline]
@@ -28,29 +27,44 @@
 
 (defn home-panel []
   (layouts/full-width-layout
-    "S23M - Business Performance Optimisation"
-    "S23M makes sense of the world's information from your unique point of view. We offer business performance optimisation services."
     "Business Performance Optimisation"
+    "S23M makes sense of the world's information from your unique point of view. We offer business performance optimisation services."
     [home-page-content]))
 
 ;; about
 
-(defn about-panel []
-  [:div "This is the About Page."
-   [:div [:a {:href (routes/url-for :home)} "go to Home Page"]]])
+;; [:div "This is the About Page."
+;;  [:div [:a {:href (routes/url-for :home)} "go to Home Page"]]])
 
+(defn about-panel []
+   (layouts/full-width-layout
+   "About Us"
+   "S23M is built around a powerful methodology for gaining a deep understanding of your business and its future potential."
+   [home-page-content]))
+
+;; 404
+
+(defn not-found-panel
+  []
+   (layouts/full-width-layout
+   "Page not found"
+   "Page not found"
+   [:span "Not found"]))
 
 ;; main
 
 (defn- panels [panel-name]
+  (js/console.log (str "panels '" panel-name "'"))
   (case panel-name
     :home-panel [home-panel]
     :about-panel [about-panel]
-    [:div]))
+    [not-found-panel]))
 
 (defn show-panel [panel-name]
+  (js/console.log (str "show-panel '" panel-name "'"))
   [panels panel-name])
 
 (defn main-panel []
   (let [active-panel (re-frame/subscribe [::subs/active-panel])]
+    (js/console.log "main-panel")
     [show-panel @active-panel]))

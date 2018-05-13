@@ -12,12 +12,15 @@
                   "about" :about
                   ;; "about/" :about
                   ;; "about/index.html" :about
+                  true :not-found
                   }])
 
-(defn- remove-last-n [str n]
+(defn- remove-last-n
+  [str n]
   (subs str 0 (- (count str) n)))
 
-(defn- simplify [url]
+(defn- simplify
+  [url]
   ;; if url ends with / or with /index.html, drop the suffix
   (cond
     (and (s/ends-with? url "/") (> (count url) 1)) (remove-last-n url 1)
@@ -40,13 +43,16 @@
     (-> (bidi/match-route* routes simplified options)
         (assoc :query-params query-params))))
 
-(defn- dispatch-route [matched-route]
-  (js/console.log "dispatch-route")
+(defn- dispatch-route
+  [matched-route]
+  (js/console.log (str "dispatch-route: " matched-route))
   (let [panel-name (keyword (str (name (:handler matched-route)) "-panel"))]
+    (js/console.log (str "panel-name: " panel-name))
     (re-frame/dispatch [::events/set-active-panel panel-name])))
 
-(defn app-routes []
-  (js/console.log "dispatch-route")
+(defn app-routes
+  []
+  (js/console.log "app-routes")
   (pushy/start! (pushy/pushy dispatch-route parse-url)))
 
 (def url-for (partial bidi/path-for routes))
