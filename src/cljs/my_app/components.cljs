@@ -132,19 +132,20 @@
         [:div.col1pad
          [:div.col1
           [:table.links
-           [:tr
-            [:td.left
-             [:a.smallbutton
-              {:href "case-studies/index.html"}
-              "Case Studies"]]
-            [:td.center
-             [:a.smallbutton
-              {:href "life/index.html"}
-              "Collaboration"]]
-            [:td.right
-             [:a.smallbutton
-              {:href "methodology/index.html"}
-              "Methodology"]]]]
+            [:tbody
+              [:tr
+                [:td.left
+                 [:a.smallbutton
+                  {:href "case-studies/index.html"}
+                  "Case Studies"]]
+                [:td.center
+                 [:a.smallbutton
+                  {:href "life/index.html"}
+                  "Collaboration"]]
+                [:td.right
+                 [:a.smallbutton
+                  {:href "methodology/index.html"}
+                  "Methodology"]]]]]
               ]]]
        [:div.col2.sidebar-left
         [:span.left
