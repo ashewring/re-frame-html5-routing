@@ -3,9 +3,14 @@
             [my-app.routes :as routes]
             [my-app.subs :as subs]
             [my-app.meta-tags :as meta-tags]
+            [my-app.pages :as pages]
             [goog.i18n.DateTimeFormat :as dtf]
             [clojure.string :as s]
             ))
+
+(defn- images-location
+  [name]
+  (str "/assets/images/" name))
 
 (defn- current-year [] (.format (goog.i18n.DateTimeFormat. "yyyy") (js/Date.)))
 
@@ -38,9 +43,9 @@
     [:a
      {:href (routes/url-for :life)}
      [:img.s23m-logo
-      {:title "Collaboration for Life",
-       :alt "Collaboration for Life",
-       :src "/assets/images/s23m-logo.png"}]]]
+      {:title (pages/page-header :life),
+       :alt (pages/page-header :life),
+       :src (images-location "s23m-logo.png")}]]]
    [:div.headerright [:h1 heading]]
    (buttons)])
 
@@ -62,7 +67,7 @@
      [:div
       [:a.line-of-business
        {:href "innovation-new-product-development.html"}
-       [:img.rounded {:src "/assets/images/value-cycle-design.jpg"}]
+       [:img.rounded {:src (images-location "value-cycle-design.jpg")}]
        [:h3 "Innovation & New Product Development"]]
       [:p
        "Helping you to innovate and make significantly better decisions"]]]
@@ -71,7 +76,7 @@
       [:a.line-of-business
        {:href "operational-excellence.html"}
        [:img.rounded
-        {:src "/assets/images/collaboration-whiteboard.jpg"}]
+        {:src (images-location "collaboration-whiteboard.jpg")}]
        [:h3 "Operational Excellence"]]
      [:p
       "Producing transformative improvements by reducing complexity and catalysing cultural transformation"]]]
@@ -79,7 +84,7 @@
      [:div
       [:a.line-of-business
        {:href "enterprise-saas.html"}
-       [:img.rounded {:src "/assets/images/saas.jpg"}]
+       [:img.rounded {:src (images-location "saas.jpg")}]
        [:h3 "Enterprise Software as a Service"]]
       [:p
        "Enabling people and software systems to interact in the simplest possible way"]]]]])
@@ -95,7 +100,7 @@
       {:href href, :target "_blank"}
       {:href href})
     [:img.rounded
-      {:src (str "/assets/images/industries/" (name-to-filename name) ".jpg")}]
+      {:src (str (images-location "industries/") (name-to-filename name) ".jpg")}]
     [:div.link-footer name]])
 
 (defn industries
@@ -140,8 +145,8 @@
                   "Case Studies"]]
                 [:td.center
                  [:a.smallbutton
-                  {:href "life/index.html"}
-                  "Collaboration"]]
+                  {:href (routes/url-for :life)}
+                  (pages/button-title :life)]]
                 [:td.right
                  [:a.smallbutton
                   {:href "methodology/index.html"}
