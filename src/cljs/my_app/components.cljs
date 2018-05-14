@@ -157,7 +157,7 @@
       text]])
 
 (defn footer
-  []
+  [left centre right]
   [:span
     [:div.footer-separator]
     [:div.colmask.footer
@@ -169,9 +169,9 @@
           [:table.links
             [:tbody
               [:tr
-                [:td.left (small-button :case-studies)]
-                [:td.center (small-button :life)]
-                [:td.right (small-button :methodology)]]]]
+                [:td.left (small-button left)]
+                [:td.center (small-button centre)]
+                [:td.right (small-button right)]]]]
               ]]]
        [:div.col2.sidebar-left
         [:span.left

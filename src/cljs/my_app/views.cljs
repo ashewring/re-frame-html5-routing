@@ -18,7 +18,7 @@
         [c/lines-of-business]
         [c/industries]
         [c/call-to-action "Contact us about your business challenges"]
-        [c/footer]]
+        [c/footer :case-studies :life :methodology]]
 
       ;; pre-loading content
       [:img
@@ -40,7 +40,7 @@
     "S23M is built around a powerful methodology for gaining a deep understanding of your business and its future potential."
     [:span
       "About"
-      [:span [c/footer]]]))
+      [:span [c/footer :case-studies :life :methodology]]]))
 
 ;; life
 
@@ -51,7 +51,7 @@
     "TODO"
     [:span
       "Collaboration for Life"
-      [c/footer]]))
+      [c/footer :case-studies :life :methodology]]))
 
 ;; methodology
 
@@ -62,7 +62,7 @@
     "TODO"
     [:span
       "Methodology"
-      [c/footer]]))
+      [c/footer :case-studies :life :methodology]]))
 
 ;; industrial-automation
 (defn industrial-automation-panel
@@ -72,7 +72,7 @@
     "TODO"
     [:span
       "industrial-automation"
-      [c/footer]]))
+      [c/footer :case-studies :life :methodology]]))
 
 ;; 404
 
