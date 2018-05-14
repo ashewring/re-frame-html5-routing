@@ -3,66 +3,78 @@
 
 (def ^:private page-metadata {
   :home {
-    :button-title "Home"
+    :short-title "Home"
     :header "Business Performance Optimisation"
     :description "S23M makes sense of the world's information from your unique point of view. We offer business performance optimisation services."
   }
   :about {
-    :button-title "About"
+    :short-title "About"
     :header "About"
     :description "S23M is built around a powerful methodology for gaining a deep understanding of your business and its future potential."
   }
   :contact-us {
-    :button-title "Contact"
+    :short-title "Contact"
     :header "Contact Us"
     :description "Contact us to discuss your specific needs. S23M offers business performance optimisation services across several industries."
   }
   :case-studies {
-    :button-title "Case Studies"
+    :short-title "Case Studies"
     :header "Case Studies"
     :description "A list of S23M case studies by geographical region."
   }
   :life {
-    :button-title "Collaboration"
+    :short-title "Collaboration"
     :header "Collaboration for Life"
     :description "S23M provides customers with unique expertise in managing complex organisations and systems, and in designing adaptive and resilient systems."
   }
   :methodology {
-    :button-title "Methodology"
+    :short-title "Methodology"
     :header "MODA&thinsp;+&thinsp;MODE methodology"
     :description "MODA + MODE (Model Oriented Domain Analysis and Engineering) provide advanced techniques for modular and redundant system design."
   }
   :news {
-    :button-title "News"
+    :short-title "News"
     :header "News"
     :description "TODO"
   }
   :ciic {
-    :button-title "Interdisciplinary"
+    :short-title "Interdisciplinary"
   }
   :agriculture {
-    :button-title "Agriculture"
+    :short-title "Agriculture"
   }
   :healthcare {
-    :button-title "Healthcare"
+    :short-title "Healthcare"
   }
   :construction {
-    :button-title "Construction"
+    :short-title "Construction"
   }
   :logistics {
-    :button-title "Logistics"
+    :short-title "Logistics"
   }
   :industrial-automation {
-    :button-title "Industrial Automation"
+    :short-title "Industrial Automation"
   }
   :professional-services {
-    :button-title "Professional Services"
+    :short-title "Professional Services"
   }
   :government {
-    :button-title "Government"
+    :short-title "Government"
   }
   :disclaimer {
-    :button-title "Disclaimer"
+    :short-title "Disclaimer"
+  }
+  :innovation-new-product-development {
+    :short-title "Innovation & New Product Development"
+    :long-title "Helping you to innovate and make significantly better decisions"
+  }
+  :operational-excellence {
+    :short-title "Operational Excellence"
+    :long-title "Producing transformative improvements by reducing complexity and catalysing cultural transformation"
+  }
+  :enterprise-saas {
+    :short-title "Enterprise Software as a Service"
+    :long-title "Enabling people and software systems to interact in the simplest possible way"
   }
   :not-found {
     :header "Page not found"
@@ -70,18 +82,12 @@
   }
 })
 
-(defn- lookup-page-metadata
-  [id k]
-  (k (id page-metadata)))
+(defn- lookup-page-metadata [id k] (k (id page-metadata)))
 
-(defn button-title
-  [id]
-  (lookup-page-metadata id :button-title))
+(defn short-title [id] (lookup-page-metadata id :short-title))
 
-(defn page-header
-  [id]
-  (lookup-page-metadata id :header))
+(defn long-title [id] (lookup-page-metadata id :long-title))
 
-(defn page-description
-  [id]
-  (lookup-page-metadata id :description))
+(defn page-header [id] (lookup-page-metadata id :header))
+
+(defn page-description [id] (lookup-page-metadata id :description))

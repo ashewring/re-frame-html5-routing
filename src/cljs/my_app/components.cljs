@@ -26,7 +26,7 @@
   [:a.smallbutton
    {:href
      (routes/url-for id)}
-     (pages/button-title id)])
+     (pages/short-title id)])
 
 (defn- buttons
   []
@@ -39,7 +39,7 @@
     (small-button :about)
     [:a#news-button.smallbutton.news
       {:href (routes/url-for :news)}
-      (pages/button-title :news)]
+      (pages/short-title :news)]
     (small-button :contact-us)]])
 
 (defn header
@@ -66,13 +66,13 @@
       "from your unique point of view"]])
 
 (defn- line-of-business-button
-  [href image-name title description]
+  [id image-name]
   [:div
    [:a.line-of-business
-    {:href href}
+    {:href (routes/url-for id)}
     [:img.rounded {:src (image image-name)}]
-    [:h3 title]]
-   [:p description]])
+    [:h3 (pages/short-title id)]]
+   [:p (pages/long-title id)]])
 
 (defn lines-of-business
   []
@@ -80,20 +80,11 @@
   [:div.section
     [:ul.responsive-list
       [:li.innovation-new-product-development
-        (line-of-business-button "innovation-new-product-development.html"
-          "value-cycle-design.jpg"
-          "Innovation & New Product Development"
-          "Helping you to innovate and make significantly better decisions")]
+        (line-of-business-button :innovation-new-product-development "value-cycle-design.jpg")]
       [:li.operational-excellence
-        (line-of-business-button "operational-excellence.html"
-          "collaboration-whiteboard.jpg"
-          "Operational Excellence"
-          "Producing transformative improvements by reducing complexity and catalysing cultural transformation")]
+        (line-of-business-button :operational-excellence "collaboration-whiteboard.jpg")]
       [:li.enterprise-saas
-        (line-of-business-button "enterprise-saas.html"
-          "saas.jpg"
-          "Enterprise Software as a Service"
-          "Enabling people and software systems to interact in the simplest possible way")]]])
+        (line-of-business-button :enterprise-saas "saas.jpg")]]])
 
 (defn- name-to-filename
   [name]
@@ -117,7 +108,7 @@
 (defn- industry-button
   [id]
   (let [href (routes/url-for id)
-        name (pages/button-title id)]
+        name (pages/short-title id)]
     [:a.industry
       (if (s/starts-with? href "http")
         {:key id :href href :target "_blank"}
@@ -183,4 +174,4 @@
 
 (defn disclaimer
   []
-  [:div.disclaimer [:a {:href (routes/url-for :disclaimer)} (pages/button-title :disclaimer)]])
+  [:div.disclaimer [:a {:href (routes/url-for :disclaimer)} (pages/short-title :disclaimer)]])

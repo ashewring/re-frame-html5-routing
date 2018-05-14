@@ -8,8 +8,11 @@
             [clojure.string :as s]
             [cemerick.url :as c]))
 
-(def routes ["/" {""                  :home
-                  "disclaimer.html"   :disclaimer
+(def routes ["/" {""                                          :home
+                  "disclaimer.html"                           :disclaimer
+                  "innovation-new-product-development.html"   :innovation-new-product-development
+                  "operational-excellence.html"               :operational-excellence
+                  "enterprise-saas.html"                      :enterprise-saas
                   "about"             :about
                   "life"              :life
                   "case-studies"      :case-studies
