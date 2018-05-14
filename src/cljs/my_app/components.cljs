@@ -128,6 +128,7 @@
       (js/console.log (str "industry-button - href: '" href "', name: '" name "'"))
       [:div.link-footer name]]))
 
+;; TODO: make this a def (static content)
 (defn industries
   []
   (js/console.log "industries")
@@ -137,11 +138,11 @@
     [:div.flowing-list-wrapper
       (industry-button :agriculture)
       (industry-button :healthcare)
-      (industry "Construction" "construction/index.html")
-      (industry "Logistics" "logistics/index.html")
-      (industry "Industrial Automation" "insight/data-science-case.html#case-study")
-      (industry "Professional Services" "performance/governance-case.html#case-study")
-      (industry "Government" "government/index.html")
+      (industry-button :construction)
+      (industry-button :logistics)
+      (industry-button :industrial-automation)
+      (industry-button :professional-services)
+      (industry-button :government)
       (industry "Interdisciplinary" "https://ciic.s23m.com/about")
       ]])
 

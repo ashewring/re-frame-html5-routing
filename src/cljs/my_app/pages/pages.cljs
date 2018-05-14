@@ -46,6 +46,21 @@
   :healthcare {
     :button-title "Healthcare"
   }
+  :construction {
+    :button-title "Construction"
+  }
+  :logistics {
+    :button-title "Logistics"
+  }
+  :industrial-automation {
+    :button-title "Industrial Automation"
+  }
+  :professional-services {
+    :button-title "Professional Services"
+  }
+  :government {
+    :button-title "Government"
+  }
   :not-found {
     :header "Page not found"
     :description "Page not found"
