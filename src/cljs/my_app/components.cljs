@@ -122,11 +122,21 @@
         name (pages/button-title id)]
     [:a.industry
       (if (s/starts-with? href "http")
-        {:href href :target "_blank"}
-        {:href href})
+        {:key id :href href :target "_blank"}
+        {:key id :href href})
       (industries-image name)
       (js/console.log (str "industry-button - href: '" href "', name: '" name "'"))
       [:div.link-footer name]]))
+
+(def ^:private industry-list
+  [:agriculture
+   :healthcare
+   :construction
+   :logistics
+   :industrial-automation
+   :professional-services
+   :government
+   :ciic])
 
 ;; TODO: make this a def (static content)
 (defn industries
@@ -136,15 +146,8 @@
     [:div.headline-container
       [:h2.headline "Industries"]]
     [:div.flowing-list-wrapper
-      (industry-button :agriculture)
-      (industry-button :healthcare)
-      (industry-button :construction)
-      (industry-button :logistics)
-      (industry-button :industrial-automation)
-      (industry-button :professional-services)
-      (industry-button :government)
-      (industry-button :ciic)
-      ]])
+      (for [id industry-list]
+        (industry-button id))]])
 
 (defn call-to-action
   [text]
