@@ -143,7 +143,7 @@
       (industry-button :industrial-automation)
       (industry-button :professional-services)
       (industry-button :government)
-      (industry "Interdisciplinary" "https://ciic.s23m.com/about")
+      (industry-button :ciic)
       ]])
 
 (defn call-to-action

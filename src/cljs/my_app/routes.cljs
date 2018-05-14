@@ -26,7 +26,11 @@
                     "governance-case.html" :professional-services
                   }
                   ;; true            :not-found
-             }])
+             }
+             ])
+
+(def ^:private external-urls
+  {:ciic "https://ciic.s23m.com/about"})
 
 (defn- remove-last-n
   [str n]
@@ -68,4 +72,9 @@
   (js/console.log "app-routes")
   (pushy/start! (pushy/pushy dispatch-route parse-url)))
 
-(def url-for (partial bidi/path-for routes))
+(defn url-for
+  [id]
+  (if (contains? external-urls id)
+    (id external-urls)
+    (bidi/path-for routes id)
+  ))
