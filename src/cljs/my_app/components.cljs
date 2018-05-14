@@ -65,36 +65,35 @@
       [:br]
       "from your unique point of view"]])
 
+(defn- line-of-business-button
+  [href image-name title description]
+  [:div
+   [:a.line-of-business
+    {:href href}
+    [:img.rounded {:src (image image-name)}]
+    [:h3 title]]
+   [:p description]])
+
 (defn lines-of-business
   []
   (js/console.log "lines-of-business")
   [:div.section
-   [:ul.responsive-list
-    [:li.innovation-new-product-development
-     [:div
-      [:a.line-of-business
-       {:href "innovation-new-product-development.html"}
-       [:img.rounded {:src (image "value-cycle-design.jpg")}]
-       [:h3 "Innovation & New Product Development"]]
-      [:p
-       "Helping you to innovate and make significantly better decisions"]]]
-    [:li.operational-excellence
-     [:div
-      [:a.line-of-business
-       {:href "operational-excellence.html"}
-       [:img.rounded
-        {:src (image "collaboration-whiteboard.jpg")}]
-       [:h3 "Operational Excellence"]]
-     [:p
-      "Producing transformative improvements by reducing complexity and catalysing cultural transformation"]]]
-    [:li.enterprise-saas
-     [:div
-      [:a.line-of-business
-       {:href "enterprise-saas.html"}
-       [:img.rounded {:src (image "saas.jpg")}]
-       [:h3 "Enterprise Software as a Service"]]
-      [:p
-       "Enabling people and software systems to interact in the simplest possible way"]]]]])
+    [:ul.responsive-list
+      [:li.innovation-new-product-development
+        (line-of-business-button "innovation-new-product-development.html"
+          "value-cycle-design.jpg"
+          "Innovation & New Product Development"
+          "Helping you to innovate and make significantly better decisions")]
+      [:li.operational-excellence
+        (line-of-business-button "operational-excellence.html"
+          "collaboration-whiteboard.jpg"
+          "Operational Excellence"
+          "Producing transformative improvements by reducing complexity and catalysing cultural transformation")]
+      [:li.enterprise-saas
+        (line-of-business-button "enterprise-saas.html"
+          "saas.jpg"
+          "Enterprise Software as a Service"
+          "Enabling people and software systems to interact in the simplest possible way")]]])
 
 (defn- name-to-filename
   [name]
@@ -103,7 +102,6 @@
 (defn- industries-image
   [name]
   (js/console.log (str "industries-image: " (image "industries/") (name-to-filename name) ".jpg"))
-
   [:img.rounded
     {:src (str (image "industries/") (name-to-filename name) ".jpg")}])
 
@@ -185,4 +183,4 @@
 
 (defn disclaimer
   []
-  [:div.disclaimer [:a {:href "disclaimer.html"} "Disclaimer"]])
+  [:div.disclaimer [:a {:href (routes/url-for :disclaimer)} (pages/button-title :disclaimer)]])

@@ -8,17 +8,18 @@
             [clojure.string :as s]
             [cemerick.url :as c]))
 
-(def routes ["/" {""              :home
-                  "about"         :about
-                  "life"          :life
-                  "case-studies"  :case-studies
-                  "methodology"   :methodology
-                  "news"          :news
-                  "agriculture"   :agriculture
-                  "healthcare"    :healthcare
-                  "construction"  :construction
-                  "logistics"     :logistics
-                  "government"    :government
+(def routes ["/" {""                  :home
+                  "disclaimer.html"   :disclaimer
+                  "about"             :about
+                  "life"              :life
+                  "case-studies"      :case-studies
+                  "methodology"       :methodology
+                  "news"              :news
+                  "agriculture"       :agriculture
+                  "healthcare"        :healthcare
+                  "construction"      :construction
+                  "logistics"         :logistics
+                  "government"        :government
                   "insight/" {
                     "data-science-case.html" :industrial-automation
                   }

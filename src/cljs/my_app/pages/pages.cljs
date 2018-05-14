@@ -61,6 +61,9 @@
   :government {
     :button-title "Government"
   }
+  :disclaimer {
+    :button-title "Disclaimer"
+  }
   :not-found {
     :header "Page not found"
     :description "Page not found"
