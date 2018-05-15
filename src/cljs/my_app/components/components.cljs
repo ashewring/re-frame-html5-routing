@@ -1,9 +1,10 @@
+;; The smallest building blocks
 (ns my-app.components
   (:require [re-frame.core :as re-frame]
             [my-app.routes :as routes]
             [my-app.subs :as subs]
             [my-app.meta-tags :as meta-tags]
-            [my-app.page-metadata :as pages]
+            [my-app.page-metadata :as pm]
             [goog.i18n.DateTimeFormat :as dtf]
             [clojure.string :as s]
             ))
@@ -26,7 +27,7 @@
   [:a.smallbutton
    {:href
      (routes/url-for id)}
-     (pages/short-title id)])
+     (pm/short-title id)])
 
 (defn- buttons
   []
@@ -39,7 +40,7 @@
     (small-button :about)
     [:a#news-button.smallbutton.news
       {:href (routes/url-for :news)}
-      (pages/short-title :news)]
+      (pm/short-title :news)]
     (small-button :contact-us)]])
 
 (defn header
@@ -50,8 +51,8 @@
     [:a
      {:href (routes/url-for :life)}
      [:img.s23m-logo
-      {:title (pages/page-header :life),
-       :alt (pages/page-header :life),
+      {:title (pm/page-header :life),
+       :alt (pm/page-header :life),
        :src (image "s23m-logo.png")}]]]
    [:div.headerright [:h1 heading]]
    (buttons)])
@@ -71,8 +72,8 @@
    [:a.line-of-business
     {:href (routes/url-for id)}
     [:img.rounded {:src (image image-name)}]
-    [:h3 (pages/short-title id)]]
-   [:p (pages/long-title id)]])
+    [:h3 (pm/short-title id)]]
+   [:p (pm/long-title id)]])
 
 (defn lines-of-business
   []
@@ -110,7 +111,7 @@
 (defn- industry-button
   [id]
   (let [href (routes/url-for id)
-        name (pages/short-title id)]
+        name (pm/short-title id)]
     [:a.industry
       (if (absolute? href)
         {:key id :href href :target "_blank"}
@@ -176,4 +177,4 @@
 
 (defn disclaimer
   []
-  [:div.disclaimer [:a {:href (routes/url-for :disclaimer)} (pages/short-title :disclaimer)]])
+  [:div.disclaimer [:a {:href (routes/url-for :disclaimer)} (pm/short-title :disclaimer)]])

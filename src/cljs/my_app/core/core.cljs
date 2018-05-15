@@ -3,7 +3,7 @@
             [re-frame.core :as re-frame]
             [my-app.events :as events]
             [my-app.routes :as routes]
-            [my-app.views :as views]
+            [my-app.pages :as pages]
             [my-app.config :as config]))
 
 
@@ -14,7 +14,7 @@
 
 (defn mount-root []
   (re-frame/clear-subscription-cache!)
-  (reagent/render [views/main-panel]
+  (reagent/render [pages/main-panel]
                   (.getElementById js/document "app")))
 
 (defn ^:export init []

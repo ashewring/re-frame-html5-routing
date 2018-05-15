@@ -1,3 +1,4 @@
+;; Used to set HTML meta tags. See https://github.com/district0x/district-ui-component-meta-tags
 (ns my-app.meta-tags
   (:require [reagent.core :as r]
             [cljsjs.react-meta-tags]
@@ -5,7 +6,6 @@
 
 (def ^:private react-meta-tags (r/adapt-react-class (aget js/MetaTags "default")))
 
-;; See https://github.com/district0x/district-ui-component-meta-tags
 (defn meta-tags [{:keys [title description]} & tags]
   [react-meta-tags
    [:title {:id "title"} title]

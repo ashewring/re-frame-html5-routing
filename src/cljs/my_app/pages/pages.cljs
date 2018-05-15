@@ -1,4 +1,4 @@
-(ns my-app.views
+(ns my-app.pages
   (:require [re-frame.core :as re-frame]
             [my-app.routes :as routes]
             [my-app.subs :as subs]

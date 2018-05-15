@@ -1,3 +1,4 @@
+;; Compositions of various components
 (ns my-app.layouts
   (:require [my-app.components :as c]))
 

@@ -1,3 +1,4 @@
+;; Metadata for pages
 (ns my-app.page-metadata
   (:require [clojure.string :as s]))
 
