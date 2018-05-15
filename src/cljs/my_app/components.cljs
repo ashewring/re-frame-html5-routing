@@ -3,7 +3,7 @@
             [my-app.routes :as routes]
             [my-app.subs :as subs]
             [my-app.meta-tags :as meta-tags]
-            [my-app.pages :as pages]
+            [my-app.page-metadata :as pages]
             [goog.i18n.DateTimeFormat :as dtf]
             [clojure.string :as s]
             ))
@@ -105,12 +105,14 @@
     (industries-image name)
     [:div.link-footer name]])
 
+(defn- absolute? [url] (s/starts-with? url "http"))
+
 (defn- industry-button
   [id]
   (let [href (routes/url-for id)
         name (pages/short-title id)]
     [:a.industry
-      (if (s/starts-with? href "http")
+      (if (absolute? href)
         {:key id :href href :target "_blank"}
         {:key id :href href})
       (industries-image name)

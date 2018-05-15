@@ -1,4 +1,4 @@
-(ns my-app.pages
+(ns my-app.page-metadata
   (:require [clojure.string :as s]))
 
 (def ^:private page-metadata {
