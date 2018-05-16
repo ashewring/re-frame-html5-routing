@@ -22,26 +22,33 @@
   (js/console.log "meta-tags")
   [meta-tags/meta-tags {:title title :description description} {:id "copyright" :name "copyright" :content (copyright)}])
 
+;; Creates a button with optional overriding anchor keyword / selector
+;; TODO: enablement setting (React on-click false?)
+;;{:on-click "return false", :href "#"}
 (defn- small-button
-  [id]
-  [:a.smallbutton
-   {:href
-     (routes/url-for id)}
-     (pm/short-title id)])
+  ([id]
+   (small-button id true))
+  ([id enabled?]
+   (small-button id enabled? :a.smallbutton))
+  ([id enabled? anchor-keyword]
+    (let [parent (if enabled?
+        anchor-keyword
+        (keyword (subs (str anchor-keyword ".disabled") 1)))]
+      [parent
+       {:href
+         (routes/url-for id)}
+         (pm/short-title id)])))
 
+;; TODO: proper event handling based on current page (need subscription)
 (defn- buttons
   []
   (js/console.log "buttons")
   [:div.buttonholder
-   [:span.buttons ;; TODO: proper event handling based on current page
-    [:a.smallbutton.disabled
-     ;;{:on-click "return false", :href "#"}
-     "Home"]
-    (small-button :about)
-    [:a#news-button.smallbutton.news
-      {:href (routes/url-for :news)}
-      (pm/short-title :news)]
-    (small-button :contact-us)]])
+    [:span.buttons
+      (small-button :home false)
+      (small-button :about true)
+      (small-button :news true :a#news-button.smallbutton.news)
+      (small-button :contact-us true)]])
 
 (defn header
   [heading]
