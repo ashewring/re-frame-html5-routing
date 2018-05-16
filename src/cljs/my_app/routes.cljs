@@ -14,6 +14,7 @@
                   "operational-excellence.html"               :operational-excellence
                   "enterprise-saas.html"                      :enterprise-saas
                   "about"             :about
+                  "contactus"         :contact-us
                   "life"              :life
                   "case-studies"      :case-studies
                   "methodology"       :methodology
